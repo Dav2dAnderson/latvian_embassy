@@ -13,10 +13,15 @@ class ServiceViewSet(viewsets.ModelViewSet):
     serializer_class = ServiceSerializer
     lookup_field = 'slug'
 
-    def get_queryset(self):
-        pass  # shetga kodni yozasi
+        
 
 """ ViewSet for Meeting management """
 class MeetingViewSet(viewsets.ModelViewSet):
     queryset = Meeting.objects.all()
     serializer_class = MeetingSerializer
+
+    def get_queryset(self):
+        return Meeting.objects.filter(customer=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(customer=self.request.user)
