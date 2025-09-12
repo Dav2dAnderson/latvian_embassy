@@ -65,13 +65,16 @@ REST_AUTH = {
     'USE_JWT': True,
     'JWT_AUTH_COOKIE': 'accounts-auth',
     'JWT_AUTH_REFRESH_COOKIE': 'account-refresh-token',
+    
+    # serializers
+    'USER_DETAILS_SERIALIZER': 'accounts.serializers.CustomUserDetailSerializer',
 }
 
 
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),   # token expires in 1 hour
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=120),   # token expires in 2 hour
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7), 
 }
 

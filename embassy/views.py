@@ -30,8 +30,8 @@ class MeetingViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(customer=self.request.user)
 
-    def get_serializer_class(self, *args, **kwargs):
-        if self.action == "list":
+    def get_serializer_class(self):
+        if self.action in ["list", "create"]:
             return MeetingSerializer
         return MeetingDetailSerializer
         
