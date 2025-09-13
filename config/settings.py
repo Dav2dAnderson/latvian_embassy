@@ -68,6 +68,7 @@ REST_AUTH = {
     
     # serializers
     'USER_DETAILS_SERIALIZER': 'accounts.serializers.CustomUserDetailSerializer',
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomUserRegistrationSerializer',
 }
 
 
@@ -88,6 +89,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'accounts.middleware.WorkingHourseMiddlware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -145,7 +147,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "Asia/Tashkent"
 
 USE_I18N = True
 

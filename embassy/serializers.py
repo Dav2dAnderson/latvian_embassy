@@ -30,6 +30,7 @@ class MeetingSerializer(serializers.ModelSerializer):
         rep['service'] = ServiceSerializer(instance.service).data
         return rep
 
+
 class MeetingDetailSerializer(serializers.ModelSerializer):
     service = ServiceSerializer(read_only=True)
     customer = CustomUserSerializer(read_only=True)

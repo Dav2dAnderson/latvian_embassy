@@ -19,7 +19,7 @@ class Service(models.Model):
     
 
 class Meeting(models.Model):
-    customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='meetings')
     meet_time = models.DateTimeField()
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)

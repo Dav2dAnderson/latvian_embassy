@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
 
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
 from .models import Service, Meeting
 from .serializers import ServiceSerializer, MeetingSerializer, MeetingDetailSerializer
+from .permissons import IsAdminOrReadOnly
 
 
 User = get_user_model()
@@ -14,6 +15,7 @@ User = get_user_model()
 
 """ ViewSet for Services """
 class ServiceViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAdminOrReadOnly]
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
     lookup_field = 'slug'
@@ -21,6 +23,7 @@ class ServiceViewSet(viewsets.ModelViewSet):
 
 """ ViewSet for Meeting management """
 class MeetingViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Meeting.objects.all()
     serializer_class = MeetingSerializer
 
